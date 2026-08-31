@@ -1,0 +1,54 @@
+---
+title: "01. Interfaz vs Clase Abstracta"
+description: "Diferencias fundamentales, patrones de diseño y preparación para entrevista."
+---
+
+import { Image } from 'astro:assets';
+import DecisionMatrix from '@/components/DecisionMatrix.astro';
+import Flashcard from '@/components/Flashcard.astro';
+import summaryImg from '@/assets/java/interface-vs-abstract.png';
+
+## 🖼️ Imagen Resumen
+
+<div style="text-align: center; margin: 1.5rem 0;">
+  <Image 
+    src={summaryImg} 
+    alt="Infografía comparativa Interfaz vs Clase Abstracta en Java" 
+    style="border-radius: 10px; max-width: 100%; height: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" 
+  />
+</div>
+
+---
+
+## ⚡ Concepto Clave en 30 Segundos
+
+- **Interfaz (`interface`):** Define un **contrato de comportamiento** ("Qué se puede hacer"). Soporta herencia múltiple y no mantiene estado de instancia mutable (solo constantes `public static final`).
+- **Clase Abstracta (`abstract class`):** Define una **plantilla base ("Es-Un")**. Permite herencia simple, compartir atributos con estado mutable (campos `private`/`protected`) y reutilizar código ejecutable entre subclases acopladas.
+
+---
+
+## 🎯 Matriz de Decisión para Entrevistas (Formato STAR)
+
+<DecisionMatrix 
+  decision="Usar Interfaz por defecto para contratos de servicios y APIs."
+  why="Promueve el desacoplamiento total (Inversión de Control) y simplifica las pruebas unitarias con Mocks."
+  tradeoff="Si se requieren agregar nuevos comportamientos sin romper la compatibilidad, se debe recurrir a métodos `default`."
+  alternative="Usar Clase Abstracta únicamente cuando exista una relación 'Es-Un' estricta entre las clases."
+  context="Arquitectura de Microservicios, Clean Architecture, Patrón Repository."
+/>
+
+---
+
+## 🧠 Preguntas Frecuentes de Entrevistas (Flashcards)
+
+<Flashcard question="¿Cuándo preferirías una Clase Abstracta sobre una Interfaz en Java 17/21?">
+Preferiría una **Clase Abstracta** cuando:
+1. Necesite definir **estado mutable** (variables de instancia no `final`).
+2. Requiera miembros con visibilidad `protected` o `private`.
+3. Quiera implementar el patrón **Template Method** donde el algoritmo principal está definido en la clase base y ciertos pasos son extendidos por subclases.
+</Flashcard>
+
+<Flashcard question="¿Qué cambio importante sufrieron las interfaces a partir de Java 8 y Java 9?">
+- **Java 8:** Introdujo métodos `default` (con cuerpo por defecto) y métodos `static`.
+- **Java 9:** Introdujo métodos `private` para encapsular y reutilizar código común entre métodos `default`.
+</Flashcard>

@@ -1,0 +1,95 @@
+---
+// src/components/DecisionMatrix.astro
+interface Props {
+  decision: string;
+  why: string;
+  tradeoff: string;
+  alternative: string;
+  context: string;
+}
+
+const { decision, why, tradeoff, alternative, context } = Astro.props;
+
+// Detecta si la ruta actual es en español
+const isSpanish = Astro.url.pathname.startsWith('/es');
+
+const labels = isSpanish
+  ? {
+      badge: "🎯 MATRIZ DE DECISIÓN (STAR)",
+      decision: "Decisión:",
+      why: "¿Por qué? (Why):",
+      tradeoff: "Trade-off / Riesgos:",
+      alternative: "Alternativa:",
+      context: "Contexto en Producción:",
+    }
+  : {
+      badge: "🎯 DECISION MATRIX (STAR)",
+      decision: "Decision:",
+      why: "Why:",
+      tradeoff: "Trade-off / Risks:",
+      alternative: "Alternative:",
+      context: "Production Context:",
+    };
+---
+
+<div class="matrix-card">
+  <div class="badge">{labels.badge}</div>
+  <div class="grid">
+    <div>
+      <strong>{labels.decision}</strong>
+      <p>{decision}</p>
+    </div>
+    <div>
+      <strong>{labels.why}</strong>
+      <p>{why}</p>
+    </div>
+    <div>
+      <strong>{labels.tradeoff}</strong>
+      <p>{tradeoff}</p>
+    </div>
+    <div>
+      <strong>{labels.alternative}</strong>
+      <p>{alternative}</p>
+    </div>
+    <div class="full-width">
+      <strong>{labels.context}</strong>
+      <p>{context}</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .matrix-card {
+    background-color: var(--sl-color-gray-6);
+    border-left: 4px solid var(--sl-color-accent);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
+  }
+  .badge {
+    display: inline-block;
+    background-color: var(--sl-color-accent);
+    color: var(--sl-color-black);
+    font-weight: bold;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .full-width {
+    grid-column: span 2;
+  }
+  strong {
+    color: var(--sl-color-white);
+  }
+  p {
+    margin-top: 0.25rem;
+    color: var(--sl-color-gray-2);
+  }
+</style>

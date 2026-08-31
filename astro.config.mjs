@@ -6,19 +6,24 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'My Docs',
+			title: 'Senior Engineering Knowledge Hub',
+			defaultLocale: 'es',
+			locales: {
+				es: { label: 'Español', lang: 'es' },
+				en: { label: 'English', lang: 'en' },
+			},
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			// Configuración automática basada en la estructura de carpetas
 			sidebar: [
 				{
-					label: 'Guides',
+					label: '01 - Java Core',
 					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
-				},
-				{
-					label: 'Reference',
-					items: [{ autogenerate: { directory: 'reference' } }],
+					{
+						label: 'Interfaz vs Clase Abstracta',
+						// El slug omite el idioma (es/en) y la extensión (.mdx)
+						slug: '01-java-core/oop/interface-vs-abstract-class',
+					},
+				],
 				},
 			],
 		}),

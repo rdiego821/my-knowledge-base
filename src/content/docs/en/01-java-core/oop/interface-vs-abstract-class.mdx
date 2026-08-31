@@ -1,0 +1,49 @@
+---
+title: "01. Interface vs Abstract Class"
+description: "Key differences, design patterns, and STAR interview response strategy."
+---
+
+import { Image } from 'astro:assets';
+import DecisionMatrix from '../../../../../components/DecisionMatrix.astro';
+import Flashcard from '../../../../../components/Flashcard.astro';
+import summaryImg from '../../../../../assets/java/interface-vs-abstract.png';
+
+## 🖼️ Summary Image
+
+<div style="text-align: center; margin: 1.5rem 0;">
+  <Image 
+    src={summaryImg} 
+    alt="Interface vs Abstract Class infographic in Java" 
+    style="border-radius: 10px; max-width: 100%; height: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" 
+  />
+</div>
+
+---
+
+## ⚡ 30-Second Key Concept
+
+- **Interface (`interface`):** Defines a **behavioral contract** ("What can be done"). Supports multiple inheritance and holds no mutable instance state.
+- **Abstract Class (`abstract class`):** Defines a **base template ("Is-A")**. Supports single inheritance, allows sharing mutable state, and provides base code execution across subclasses.
+
+---
+
+## 🎯 Interview Decision Matrix (STAR Format)
+
+<DecisionMatrix 
+  decision="Default to Interface for service contracts and APIs."
+  why="Enforces loose coupling (Dependency Inversion) and simplifies unit testing with Mocks."
+  tradeoff="Adding new methods without `default` implementations breaks all implementors."
+  alternative="Use an Abstract Class only when a strict 'Is-A' identity and shared mutable state are required."
+  context="Microservices Architecture, Clean Architecture, Repository Pattern."
+/>
+
+---
+
+## 🧠 Frequently Asked Questions (Flashcards)
+
+<Flashcard question="When would you prefer an Abstract Class over an Interface in Java 17/21?">
+Prefer an **Abstract Class** when:
+1. You need to define **mutable state** (non-final instance variables).
+2. You require non-public access modifiers (`protected` or `package-private`).
+3. You implement the **Template Method Pattern**, defining an execution workflow where subclasses implement specific steps.
+</Flashcard>
