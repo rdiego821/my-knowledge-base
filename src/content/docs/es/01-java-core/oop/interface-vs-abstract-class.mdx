@@ -5,7 +5,7 @@ description: "Diferencias fundamentales, patrones de diseño y preparación para
 
 import { Image } from 'astro:assets';
 import DecisionMatrix from '@/components/DecisionMatrix.astro';
-import Flashcard from '@/components/Flashcard.astro';
+import FlashCard from '@/components/FlashCard.astro';
 import summaryImg from '@/assets/java/interface-vs-abstract.png';
 
 ## 🖼️ Imagen Resumen
@@ -41,14 +41,14 @@ import summaryImg from '@/assets/java/interface-vs-abstract.png';
 
 ## 🧠 Preguntas Frecuentes de Entrevistas (Flashcards)
 
-<Flashcard question="¿Cuándo preferirías una Clase Abstracta sobre una Interfaz en Java 17/21?">
+<FlashCard question="¿Cuándo preferirías una Clase Abstracta sobre una Interfaz en Java 17/21?">
 Preferiría una **Clase Abstracta** cuando:
 1. Necesite definir **estado mutable** (variables de instancia no `final`).
 2. Requiera miembros con visibilidad `protected` o `private`.
 3. Quiera implementar el patrón **Template Method** donde el algoritmo principal está definido en la clase base y ciertos pasos son extendidos por subclases.
-</Flashcard>
+</FlashCard>
 
-<Flashcard question="¿Qué cambio importante sufrieron las interfaces a partir de Java 8 y Java 9?">
+<FlashCard question="¿Qué cambio importante sufrieron las interfaces a partir de Java 8 y Java 9?">
 - **Java 8:** Introdujo métodos `default` (con cuerpo por defecto) y métodos `static`.
 - **Java 9:** Introdujo métodos `private` para encapsular y reutilizar código común entre métodos `default`.
-</Flashcard>
+</FlashCard>
